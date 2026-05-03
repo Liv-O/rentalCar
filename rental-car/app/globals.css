@@ -14,7 +14,7 @@
 
 body {
   color: var(--main);
-  background: var(--badges);
+  background-color: var(--bg);
   font-family: var(--font-manrope), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -81,4 +81,12 @@ body {
 
 .main {
   flex: 1;
+}
+
+/*  */
+
+.container {
+  max-width: 1440px;
+  padding: 0 120px;
+  margin: 0 auto;
 }
