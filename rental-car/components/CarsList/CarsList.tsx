@@ -1,6 +1,7 @@
 import css from '@/components/CarsList/CarsList.module.css';
 import { Car } from '@/types/car';
 import CarCard from '@/components/CarCard/CarCard';
+import Button from '../common/Button/Button';
 
 interface CarListProps {
   cars: Car[];

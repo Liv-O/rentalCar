@@ -11,7 +11,11 @@ export default async function Catalog() {
 
   await queryClient.prefetchInfiniteQuery({
     queryKey: ['cars', 'all'],
-    queryFn: () => getCars(),
+    queryFn: ({ pageParam = 1 }) =>
+      getCars({
+        limit: 12,
+        page: pageParam,
+      }),
     initialPageParam: 1,
   });
   return (
@@ -20,10 +24,3 @@ export default async function Catalog() {
     </HydrationBoundary>
   );
 }
-
-// const Cars = async () => {
-//   const cars = await getCars();
-//   console.log('cars', cars);
-
-//   return <div>Cars</div>;
-// };
