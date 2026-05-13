@@ -18,3 +18,48 @@
 .button:hover {
   border-color: var(--dark-blue);
 }
+
+.button:disabled {
+  border-color: var(--gray-light);
+  color: var(--gray);
+  cursor: not-allowed;
+}
+
+.buttonSubmit {
+  display: block;
+  width: 156px;
+  height: 44px;
+  border: none;
+  background-color: var(--light-blue);
+  border-radius: 12px;
+
+  padding: 12px 0;
+  background-color: var(--light-blue);
+  text-align: center;
+
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--white);
+  cursor: pointer;
+
+  text-decoration: none;
+  transition: background-color 0.25s ease;
+}
+
+.buttonSubmit:hover {
+  background-color: var(--dark-blue);
+}
+
+.buttonSubmit:active {
+  background-color: var(--dark-blue);
+}
+.buttonReset {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--gray);
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}

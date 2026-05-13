@@ -7,10 +7,9 @@ import CarsList from '@/components/CarsList/CarsList';
 import Button from '@/components/common/Button/Button';
 import SelectFilter from '@/components/SelectFilter/SelectFilter';
 import { useState } from 'react';
+import SearchForm from '@/components/SearchForm/SearchFrom';
 
 export function CatalogClient() {
-  const [chosenBrand, setChosenBrand] = useState<string | null>(null);
-  const [chosenPrice, setChosenPrice] = useState<string | null>(null);
   const {
     data: cars,
     fetchNextPage,
@@ -56,29 +55,16 @@ export function CatalogClient() {
     <>
       {' '}
       <div className={`container ${css.catalogWrapper}`}>
-        <div className={css.filterWrapper}>
-          {brands && (
-            <SelectFilter
-              label={'Car brend'}
-              placeholder={'Choose a brand'}
-              options={brands}
-              chosenValue={chosenBrand}
-              setChosenValue={setChosenBrand}></SelectFilter>
-          )}
-          <SelectFilter
-            label={'Price/ 1 hour'}
-            placeholder={'Choose a price'}
-            options={['4', '3', '5', '2', '1']}
-            chosenValue={`To $${chosenPrice}`}
-            setChosenValue={setChosenPrice}></SelectFilter>
-        </div>
+        {brands && <SearchForm brands={brands} />}
+
         <div className={css.catalogList}>
           {cars && <CarsList cars={cars}></CarsList>}
         </div>
         {hasNextPage && (
           <Button
             onClick={() => fetchNextPage()}
-            isDisabled={isFetchingNextPage}>
+            isDisabled={isFetchingNextPage}
+            type="button">
             {isFetchingNextPage ? 'Loading...' : 'Load more'}
           </Button>
         )}

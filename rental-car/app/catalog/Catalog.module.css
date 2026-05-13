@@ -6,10 +6,3 @@
   padding-top: 84px;
   padding-bottom: 104px;
 }
-
-.filterWrapper {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 60px;
-  gap: 16px;
-}
