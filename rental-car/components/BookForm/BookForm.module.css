@@ -1,0 +1,93 @@
+.bookFormContainer {
+  border-radius: 16px;
+  padding: 32px;
+
+  background-color: var(--white);
+}
+
+.formBookTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: var(--main);
+
+  margin-bottom: 8px;
+}
+
+.formBookDescription {
+  margin-bottom: 24px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--gray);
+}
+
+.bookForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inputBookForm,
+.textareaBookForm {
+  border-radius: 12px;
+  padding: 12px 20px;
+  width: 100%;
+
+  border: none;
+  background-color: var(--inputs);
+
+  outline: none;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--main);
+
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.inputBookForm {
+  height: 48px;
+
+  /* padding: 0 20px; */
+}
+
+.textareaBookForm {
+  min-height: 88px;
+
+  padding: 12px 20px 56px;
+
+  resize: none;
+}
+
+.inputBookForm::placeholder,
+.textareaBookForm::placeholder {
+  color: var(--gray);
+}
+
+.inputBookForm:focus,
+.textareaBookForm:focus {
+  background-color: var(--white);
+
+  border: 1px solid var(--light-blue);
+}
+
+.error {
+  margin-top: -8px;
+
+  font-size: 12px;
+  line-height: 1.3;
+
+  color: #d9534f;
+}
+
+/* .error {
+  display: block;
+  color: #e53935;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+} */

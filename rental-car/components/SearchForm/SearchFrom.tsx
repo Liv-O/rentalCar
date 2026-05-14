@@ -6,28 +6,52 @@ import css from './SearchForm.module.css';
 
 interface SearchFormProps {
   brands: string[];
+  onSearch: (filters: {
+    brand: string;
+    price: string;
+    from: string;
+    to: string;
+  }) => void;
 }
+export const convertKmToMiles = (km: number) => {
+  return String(Math.round(km / 1.60934));
+};
 
-export default function SearchForm({ brands }: SearchFormProps) {
-  const [chosenBrand, setChosenBrand] = useState<string | null>(null);
-  const [chosenPrice, setChosenPrice] = useState<string | null>(null);
+export default function SearchForm({ brands, onSearch }: SearchFormProps) {
+  const [chosenBrand, setChosenBrand] = useState<string>('');
+  const [chosenPrice, setChosenPrice] = useState<string>('');
   const [mileageFrom, setMileageFrom] = useState('');
   const [mileageTo, setMileageTo] = useState('');
   const priceOptions = ['30', '40', '50', '60', '70', '80'];
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    console.log({
+    onSearch({
       brand: chosenBrand,
       price: chosenPrice,
-      from: mileageFrom,
-      to: mileageTo,
+      from: mileageFrom ? convertKmToMiles(Number(mileageFrom)) : '',
+      to: mileageTo ? convertKmToMiles(Number(mileageTo)) : '',
+    });
+  };
+
+  const handleReset = () => {
+    setChosenBrand('');
+    setChosenPrice('');
+
+    setMileageFrom('');
+    setMileageTo('');
+
+    onSearch({
+      brand: '',
+      price: '',
+      from: '',
+      to: '',
     });
   };
   return (
     <form
       onSubmit={handleSubmit}
+      onReset={handleReset}
       className={css.searchForm}>
       {/* <div className={css.filterWrapper}> */}
       <SelectFilter

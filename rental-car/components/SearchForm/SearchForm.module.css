@@ -9,7 +9,8 @@
   display: flex;
   justify-content: center;
   margin-bottom: 60px;
-  align-items: center;
+  /* align-items: center; */
+  align-items: flex-start;
   gap: 16px;
 }
 
@@ -87,5 +88,11 @@
 }
 
 .formButtonsWrapper {
-  align-self: flex-end;
+  /* align-self: flex-end; */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
 }

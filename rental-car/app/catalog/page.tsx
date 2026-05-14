@@ -9,8 +9,15 @@ import { CatalogClient } from './Catalog.client';
 export default async function Catalog() {
   const queryClient = new QueryClient();
 
+  const defaultFilters = {
+    brand: undefined,
+    price: undefined,
+    from: undefined,
+    to: undefined,
+  };
+
   await queryClient.prefetchInfiniteQuery({
-    queryKey: ['cars', 'all'],
+    queryKey: ['cars', defaultFilters],
     queryFn: ({ pageParam = 1 }) =>
       getCars({
         limit: 12,
