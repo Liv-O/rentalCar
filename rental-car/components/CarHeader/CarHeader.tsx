@@ -23,7 +23,7 @@ export default function CarHeader({
   }
 
   return (
-    <>
+    <div className={css.carHeader}>
       <h1 className={css.carHeaderTitle}>
         {brand} {model}, {year}
       </h1>
@@ -32,6 +32,6 @@ export default function CarHeader({
       </span>
       <span className={css.carHeaderPrice}>${rentalPrice}</span>
       <p className={css.carHeaderDescription}>{description}</p>
-    </>
+    </div>
   );
 }

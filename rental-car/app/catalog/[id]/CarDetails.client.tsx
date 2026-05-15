@@ -7,6 +7,9 @@ import Image from 'next/image';
 import css from '@/app/catalog/[id]/CarDetails.module.css';
 import BookForm from '@/components/BookForm/BookForm';
 import CarHeader from '@/components/CarHeader/CarHeader';
+import CarConditions from '@/components/CarConditions/CarConditions';
+import CarSpecifications from '@/components/CarSpecifications/CarSpecifications';
+import CarFeatures from '@/components/CarFeatures/CarFeatures';
 
 interface CarDetailsProps {
   id: string;
@@ -41,6 +44,17 @@ export default function CarDetailsClient({ id }: CarDetailsProps) {
               rentalPrice={car.rentalPrice}
               description={car.description}
             />
+            <CarConditions rentalConditions={car.rentalConditions} />
+            <div className={css.divider}></div>
+            <CarSpecifications
+              year={car.year}
+              type={car.type}
+              fuelConsumption={car.fuelConsumption}
+              engineSize={car.engineSize}
+              mileage={car.mileage}
+            />
+            <div className={css.divider}></div>
+            <CarFeatures functionalities={car.functionalities} />
           </div>
         </div>
       )}

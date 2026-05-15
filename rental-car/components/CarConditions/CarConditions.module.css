@@ -1,0 +1,41 @@
+/* CarConditions.module.css */
+
+.carConditions {
+  display: flex;
+  flex-direction: column;
+}
+
+.conditionsTitle {
+  margin-bottom: 20px;
+
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.25;
+
+  color: var(--main);
+}
+
+.conditionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.conditionItem {
+  position: relative;
+
+  padding-left: 28px;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+
+  color: var(--main);
+}
+
+.icon {
+  flex-shrink: 0;
+
+  width: 16px;
+  height: 16px;
+}
