@@ -2,6 +2,8 @@
   display: flex;
   gap: 32px;
 
+  justify-content: space-between;
+
   padding-top: 84px;
   padding-bottom: 176px;
 
@@ -10,6 +12,7 @@
 
 .imageFormContainer {
   width: 640px;
+  flex-shrink: 0;
 }
 
 .carImage {
@@ -24,6 +27,11 @@
 
   display: flex;
   flex-direction: column;
+
+  max-width: 528px;
+  border-radius: 16px;
+  padding: 32px 24px;
+  background-color: var(--white);
 }
 
 .divider {

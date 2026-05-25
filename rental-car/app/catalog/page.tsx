@@ -15,7 +15,6 @@ export default async function Catalog() {
     from: undefined,
     to: undefined,
   };
-
   await queryClient.prefetchInfiniteQuery({
     queryKey: ['cars', defaultFilters],
     queryFn: ({ pageParam = 1 }) =>

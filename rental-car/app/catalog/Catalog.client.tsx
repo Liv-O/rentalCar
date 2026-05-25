@@ -40,10 +40,6 @@ export function CatalogClient() {
         rentalPrice: filters.price || undefined,
         minMileage: filters.from || undefined,
         maxMileage: filters.to || undefined,
-        // brand: filters.brand,
-        // rentalPrice: filters.price,
-        // minMileage: filters.from,
-        // maxMileage: filters.to,
       }),
     select: (data) => data.pages.flatMap((p) => p.cars),
 
@@ -72,10 +68,6 @@ export function CatalogClient() {
     queryKey: ['brands'],
     queryFn: getBrands,
   });
-
-  if (cars) {
-    console.log(cars);
-  }
 
   return (
     <>

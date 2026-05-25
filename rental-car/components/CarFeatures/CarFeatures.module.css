@@ -1,0 +1,42 @@
+/* CarFeatures.module.css */
+
+.carFeatures {
+  display: flex;
+  flex-direction: column;
+}
+
+.featuresTitle {
+  margin-bottom: 20px;
+
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+
+  color: var(--main);
+}
+
+.featuresList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.featureItem {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+
+  color: var(--main);
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.iconFeature {
+  flex-shrink: 0;
+  /* padding-right: 2px; */
+  width: 16px;
+  height: 16px;
+}

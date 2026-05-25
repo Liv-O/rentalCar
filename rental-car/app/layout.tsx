@@ -5,6 +5,7 @@ import 'modern-normalize/modern-normalize.css';
 
 import Header from '@/components/Header/Header.client';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
+import { Toaster } from 'react-hot-toast';
 
 const manrope = Manrope({
   variable: '--font-manrope',
@@ -48,7 +49,9 @@ export default function RootLayout({
         <TanStackProvider>
           <Header></Header>
 
-          <main>{children}</main>
+          <main>
+            {children} <Toaster position="top-center" />
+          </main>
         </TanStackProvider>
       </body>
     </html>

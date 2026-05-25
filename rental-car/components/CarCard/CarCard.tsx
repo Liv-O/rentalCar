@@ -42,7 +42,8 @@ export default function CarCard({ car }: CarCardProps) {
       </div>
       <Link
         href={`/catalog/${car.id}`}
-        className={css.aboutCarLink}>
+        className={css.aboutCarLink}
+        target="_blank">
         Read more
       </Link>
     </li>

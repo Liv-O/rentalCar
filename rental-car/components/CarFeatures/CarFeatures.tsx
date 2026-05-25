@@ -1,4 +1,5 @@
 import css from './CarFeatures.module.css';
+import { FiCheckCircle } from 'react-icons/fi';
 
 interface CarFeaturesProps {
   functionalities: string[];
@@ -13,6 +14,7 @@ export default function CarFeatures({ functionalities }: CarFeaturesProps) {
           <li
             key={index}
             className={css.featureItem}>
+            <FiCheckCircle className={css.iconFeature} />
             {feature}
           </li>
         ))}

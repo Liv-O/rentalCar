@@ -1,0 +1,70 @@
+.notFoundPage {
+  min-height: calc(100vh - 68px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px 20px;
+
+  background-color: var(--background);
+}
+
+.notFoundCard {
+  width: 100%;
+  max-width: 600px;
+
+  padding: 72px 56px;
+
+  border-radius: 24px;
+
+  background-color: var(--white);
+
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+
+  text-align: center;
+}
+
+.code {
+  display: inline-block;
+
+  margin-bottom: 20px;
+
+  font-weight: 700;
+  font-size: 72px;
+
+  color: var(--light-blue);
+}
+
+.title {
+  margin-bottom: 16px;
+
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 110%;
+
+  color: var(--main);
+}
+
+.description {
+  margin-bottom: 16px;
+
+  font-size: 18px;
+  line-height: 150%;
+
+  color: var(--gray);
+}
+
+.redirectText {
+  margin-bottom: 40px;
+
+  font-size: 16px;
+  line-height: 150%;
+
+  color: var(--gray);
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+}

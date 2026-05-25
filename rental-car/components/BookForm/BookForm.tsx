@@ -2,6 +2,7 @@ import Button from '../common/Button/Button';
 import css from './BookForm.module.css';
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
+import toast from 'react-hot-toast';
 
 interface BookFormValues {
   username: string;
@@ -29,12 +30,21 @@ const BookFormSchema = Yup.object().shape({
 });
 
 export default function BookForm() {
-  const handleSubmit = (
+  const handleSubmit = async (
     values: BookFormValues,
     actions: FormikHelpers<BookFormValues>,
   ) => {
-    console.log('Book data:', values);
-    actions.resetForm();
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1200));
+
+      console.log('Booking data:', values);
+
+      toast.success('Your booking has been successfully sent!');
+
+      actions.resetForm();
+    } catch (error) {
+      toast.error('Something went wrong. Please try again.');
+    }
   };
 
   return (
