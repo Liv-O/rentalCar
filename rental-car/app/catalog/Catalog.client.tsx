@@ -1,6 +1,6 @@
 'use client';
 
-import { getBrands, getCars } from '@/lib/api';
+import { getBrandsAndPrices, getCars } from '@/lib/api';
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import css from '@/app/catalog/Catalog.module.css';
 import CarsList from '@/components/CarsList/CarsList';
@@ -33,11 +33,11 @@ export function CatalogClient() {
 
     queryFn: ({ pageParam = 1 }) =>
       getCars({
-        limit: 12,
+        perPage: 12,
         page: pageParam,
 
         brand: filters.brand || undefined,
-        rentalPrice: filters.price || undefined,
+        price: filters.price || undefined,
         minMileage: filters.from || undefined,
         maxMileage: filters.to || undefined,
       }),
@@ -60,22 +60,23 @@ export function CatalogClient() {
   });
 
   const {
-    data: brands,
+    data: filtersData,
     error,
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ['brands'],
-    queryFn: getBrands,
+    queryKey: ['filters'],
+    queryFn: getBrandsAndPrices,
   });
 
   return (
     <>
       {' '}
       <div className={`container ${css.catalogWrapper}`}>
-        {brands && (
+        {filtersData && (
           <SearchForm
-            brands={brands}
+            brands={filtersData.brands}
+            prices={filtersData.price}
             onSearch={setFilters}
           />
         )}

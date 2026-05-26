@@ -3,6 +3,8 @@ import css from './BookForm.module.css';
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import toast from 'react-hot-toast';
+import { useMutation } from '@tanstack/react-query';
+import { createBookingRequest } from '@/lib/api';
 
 interface BookFormValues {
   username: string;
@@ -29,17 +31,28 @@ const BookFormSchema = Yup.object().shape({
     .max(300, 'Comment too long'),
 });
 
-export default function BookForm() {
+interface BookFormProps {
+  carId: string;
+}
+
+export default function BookForm({ carId }: BookFormProps) {
+  const mutation = useMutation({
+    mutationFn: (values: BookFormValues) =>
+      createBookingRequest(carId, {
+        name: values.username,
+        email: values.email,
+        comment: values.comment || undefined,
+      }),
+  });
   const handleSubmit = async (
     values: BookFormValues,
     actions: FormikHelpers<BookFormValues>,
   ) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1200));
+      const data = await mutation.mutateAsync(values);
 
-      console.log('Booking data:', values);
-
-      toast.success('Your booking has been successfully sent!');
+      toast.success(data.message || 'Booking request sent successfully!');
+      console.log(data.message);
 
       actions.resetForm();
     } catch (error) {

@@ -6,6 +6,7 @@ import css from './SearchForm.module.css';
 
 interface SearchFormProps {
   brands: string[];
+  prices: { min: number; max: number };
   onSearch: (filters: {
     brand: string;
     price: string;
@@ -17,12 +18,20 @@ export const convertKmToMiles = (km: number) => {
   return String(Math.round(km / 1.60934));
 };
 
-export default function SearchForm({ brands, onSearch }: SearchFormProps) {
+export default function SearchForm({
+  brands,
+  prices,
+  onSearch,
+}: SearchFormProps) {
   const [chosenBrand, setChosenBrand] = useState<string>('');
   const [chosenPrice, setChosenPrice] = useState<string>('');
   const [mileageFrom, setMileageFrom] = useState('');
   const [mileageTo, setMileageTo] = useState('');
-  const priceOptions = ['30', '40', '50', '60', '70', '80'];
+
+  const pricesOptions = [];
+  for (let i = prices.min; i <= prices.max; i += 10) {
+    pricesOptions.push(String(i));
+  }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -64,7 +73,7 @@ export default function SearchForm({ brands, onSearch }: SearchFormProps) {
       <SelectFilter
         label={'Price/ 1 hour'}
         placeholder={'Choose a price'}
-        options={priceOptions}
+        options={pricesOptions}
         chosenValue={chosenPrice ? `To $${chosenPrice}` : null}
         setChosenValue={setChosenPrice}></SelectFilter>
 

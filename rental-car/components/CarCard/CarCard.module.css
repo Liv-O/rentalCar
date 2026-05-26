@@ -37,10 +37,20 @@
   flex: 1;
 }
 
-.cardMainInfo {
+/* .cardMainInfo {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 8px;
+} */
+
+.cardMainInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 8px;
+
   margin-bottom: 8px;
 }
 
@@ -49,6 +59,14 @@
   font-size: 16px;
   line-height: 125%;
   color: var(--main);
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+
+  min-height: 48px;
 }
 
 .carModel {
@@ -60,6 +78,7 @@
   font-size: 16px;
   line-height: 125%;
   color: var(--main);
+  flex-shrink: 0;
 }
 
 .aboutCarList {

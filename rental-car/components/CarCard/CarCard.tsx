@@ -8,12 +8,6 @@ interface CarCardProps {
 }
 
 export default function CarCard({ car }: CarCardProps) {
-  function parseAddress(address: string) {
-    const [_, city, country] = address.split(', ');
-    return { city, country };
-  }
-
-  const { city, country } = parseAddress(car.address);
   return (
     <li className={css.carItem}>
       <Image
@@ -21,25 +15,34 @@ export default function CarCard({ car }: CarCardProps) {
         alt={car.model}
         width={244}
         height={268}
-        className={css.carImg}></Image>
+        className={css.carImg}
+      />
+
       <div className={css.cardInfoWrapper}>
         <div className={css.cardMainInfo}>
           <h3 className={css.cardCarTitle}>
             {car.brand} <span className={css.carModel}>{car.model}</span>,{' '}
             {car.year}
-          </h3>{' '}
+          </h3>
+
           <span className={css.carPrice}>${car.rentalPrice}</span>
         </div>
+
         <ul className={css.aboutCarList}>
-          <li className={css.aboutCarItem}>{city}</li>
-          <li className={css.aboutCarItem}>{country}</li>
+          <li className={css.aboutCarItem}>{car.location.city}</li>
+
+          <li className={css.aboutCarItem}>{car.location.country}</li>
+
           <li className={css.aboutCarItem}>{car.rentalCompany}</li>
+
           <li className={css.aboutCarItem}>{car.type}</li>
+
           <li className={css.aboutCarItem}>
-            {Math.round(Number(car.mileage) * 1.60934)} km
+            {Math.round(car.mileage * 1.60934)} km
           </li>
         </ul>
       </div>
+
       <Link
         href={`/catalog/${car.id}`}
         className={css.aboutCarLink}

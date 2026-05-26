@@ -19,7 +19,7 @@ export default async function Catalog() {
     queryKey: ['cars', defaultFilters],
     queryFn: ({ pageParam = 1 }) =>
       getCars({
-        limit: 12,
+        perPage: 12,
         page: pageParam,
       }),
     initialPageParam: 1,

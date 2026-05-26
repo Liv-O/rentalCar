@@ -2,15 +2,15 @@ import css from './CarFeatures.module.css';
 import { FiCheckCircle } from 'react-icons/fi';
 
 interface CarFeaturesProps {
-  functionalities: string[];
+  features: string[];
 }
 
-export default function CarFeatures({ functionalities }: CarFeaturesProps) {
+export default function CarFeatures({ features }: CarFeaturesProps) {
   return (
     <div className={css.carFeatures}>
       <h2 className={css.featuresTitle}>Features</h2>
       <ul className={css.featuresList}>
-        {functionalities.map((feature, index) => (
+        {features.map((feature, index) => (
           <li
             key={index}
             className={css.featureItem}>

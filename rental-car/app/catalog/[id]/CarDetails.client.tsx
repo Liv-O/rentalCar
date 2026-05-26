@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
 
 import css from '@/app/catalog/[id]/CarDetails.module.css';
+
 import BookForm from '@/components/BookForm/BookForm';
 import CarHeader from '@/components/CarHeader/CarHeader';
 import CarConditions from '@/components/CarConditions/CarConditions';
@@ -20,9 +21,9 @@ export default function CarDetailsClient({ id }: CarDetailsProps) {
     queryKey: ['car', id],
     queryFn: async () => getCarById(id),
   });
+
   return (
     <>
-      {' '}
       {car && (
         <div className={`container ${css.carDetailsContainer}`}>
           <div className={css.imageFormContainer}>
@@ -33,28 +34,35 @@ export default function CarDetailsClient({ id }: CarDetailsProps) {
               height={512}
               className={css.carImage}
             />
-            <BookForm></BookForm>
+
+            <BookForm carId={id} />
           </div>
+
           <div className={css.carInfo}>
             <CarHeader
               brand={car.brand}
               model={car.model}
               year={car.year}
-              address={car.address}
+              location={car.location}
               rentalPrice={car.rentalPrice}
               description={car.description}
             />
+
             <CarConditions rentalConditions={car.rentalConditions} />
+
             <div className={css.divider}></div>
+
             <CarSpecifications
               year={car.year}
               type={car.type}
               fuelConsumption={car.fuelConsumption}
-              engineSize={car.engineSize}
+              engine={car.engine}
               mileage={car.mileage}
             />
+
             <div className={css.divider}></div>
-            <CarFeatures functionalities={car.functionalities} />
+
+            <CarFeatures features={car.features} />
           </div>
         </div>
       )}

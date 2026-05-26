@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { Car } from '@/types/car';
 
-axios.defaults.baseURL = 'https://car-rental-api.goit.global';
+// axios.defaults.baseURL = 'https://car-rental-api.goit.global';
+axios.defaults.baseURL = 'https://car-rental-api.goit.study';
 
 export type getCarsResponse = {
   cars: Car[];
@@ -11,34 +12,59 @@ export type getCarsResponse = {
 };
 
 interface GetCarsProps {
-  limit?: number;
+  perPage?: number;
   page: number;
 
   brand?: string;
-  rentalPrice?: string;
+  price?: string;
   minMileage?: string;
   maxMileage?: string;
 }
 
 export const getCars = async ({
-  limit = 12,
+  perPage = 12,
   page = 1,
   ...filters
 }: GetCarsProps) => {
   const res = await axios.get<getCarsResponse>('/cars', {
-    params: { page, limit, ...filters },
+    params: { page, perPage, ...filters },
   });
   return res.data;
 };
 
-export type getBrandsResponse = string[];
+export type getBrandsAndPricesResponse = {
+  brands: string[];
+  price: { min: number; max: number };
+};
 
-export const getBrands = async () => {
-  const res = await axios.get<getBrandsResponse>('/brands');
+export const getBrandsAndPrices = async () => {
+  const res = await axios.get<getBrandsAndPricesResponse>('/cars/filters');
   return res.data;
 };
 
 export const getCarById = async (id: string) => {
   const res = await axios.get<Car>(`/cars/${id}`);
+  return res.data;
+};
+
+interface BookingRequestBody {
+  name: string;
+  email: string;
+  comment?: string;
+}
+
+interface BookingResponse {
+  message: string;
+}
+
+export const createBookingRequest = async (
+  carId: string,
+  body: BookingRequestBody,
+) => {
+  const res = await axios.post<BookingResponse>(
+    `/cars/${carId}/booking-requests`,
+    body,
+  );
+
   return res.data;
 };
