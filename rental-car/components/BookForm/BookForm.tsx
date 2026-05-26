@@ -52,7 +52,6 @@ export default function BookForm({ carId }: BookFormProps) {
       const data = await mutation.mutateAsync(values);
 
       toast.success(data.message || 'Booking request sent successfully!');
-      console.log(data.message);
 
       actions.resetForm();
     } catch (error) {
